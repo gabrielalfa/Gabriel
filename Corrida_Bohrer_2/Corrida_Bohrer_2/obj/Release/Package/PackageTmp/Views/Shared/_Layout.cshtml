@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @*@Styles.Render("~/Content/css")*@
+    @Scripts.Render("~/bundles/modernizr")
+
+    <meta http-equiv="Access-Control-Allow-Origin" content="https://sandbox.pagseguro.uol.com.br">
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Style -->
+    <link href="~/Content/css/bootstrap.css" rel="stylesheet">
+    <link href="~/Content/css/style.css" rel="stylesheet">
+    <!-- Responsive -->
+    <link href="~/Content/css/responsive.css" rel="stylesheet">
+    <!-- Choose Layout -->
+    @*<link href="~/Content/css/layout-boxed.css" rel="stylesheet">*@
+    <link href="~/Content/css/layout-boxed.css" rel="stylesheet">
+    <!-- Choose Skin -->
+    <link href="~/Content/css/skin-blue-Bohrer.css" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/Content/img/Vetores/bola_bohrer.png">
+    <!-- IE -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+   
+    @*<script src="~/Scripts/js/html5shiv.js"></script>
+    <script src="~/Scripts/js/respond.min.js"></script>*@
+    
+    <link href="~/Content/css/ie8.css" rel="stylesheet">
+    
+</head>
+
+<body class="off">
+    <!-- /.wrapbox start-->
+    <div class="wrapbox">
+        @Html.Partial("_Header")
+
+        @Html.Partial("_Menu")
+        @RenderBody()
+
+        @*@Html.Partial("_Sub_Footer")*@
+
+        @Html.Partial("_Footer")
+
+    </div>
+
+
+
+
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @RenderSection("scripts", required: false)
+</body>
+</html>

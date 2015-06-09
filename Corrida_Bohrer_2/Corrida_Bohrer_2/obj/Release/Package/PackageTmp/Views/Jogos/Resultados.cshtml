@@ -1,0 +1,140 @@
+﻿
+@{
+    ViewBag.Title = "Categoria";
+}
+
+<!-- PAGE TITLE
+================================================== -->
+<section class="pageheader-default text-center">
+    <div class="semitransparentbg">
+        <h1 class="animated fadeInLeftBig notransition">Ranking Temporada 1/2015</h1>
+        <p class="animated fadeInRightBig notransition container wowbreadcr">
+            Corrida dos Campeões - Bohrer Sports
+        </p>
+    </div>
+</section>
+<div class="wrapsemibox">
+    <div class="semiboxshadow text-center">
+        <img src="img/shp.png" class="img-responsive" alt="">
+    </div>
+    <!-- BLOG
+    ================================================== -->
+    <section class="container animated fadeInDown notransition">
+        <div class="row blogindex">
+            <!-- MAIN -->
+            <div class="col-md-9">
+                <div class="text-center">
+                    <h2>Ranking Corrida dos Campeões</h2>
+                    <span class="meta bottomspace30">Atualizado <a href="#" title="Posts by Henry Austin" rel="author">Adm. Bohrer</a> <span class="bullet">•</span> November 12, 2015 <span class="bullet">•</span> <a href="/Home" title="View all posts in Food &amp; Health" rel="category tag">Corrida &amp; Campeões</a></span>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <table class="table table-hover">
+                            <tr>
+                                <th>Imagem</th>
+                                <th>Nome</th>
+                                <th></th>
+                                <th>Nº Jogo</th>
+                                <th>Vitórias</th>
+                                <th>Vencedor</th>
+                                <th>Nº Jogo</th>
+                                <th>Vitórias</th>
+                                <th>Vencedor</th>
+                            </tr>
+                            @for (int i = 0; i < 10; i++)
+                            {
+                                <tr>
+                                    <td><img src="/Content/img/Vetores/Guga Kuerten.jpg" style="width:50px" class="img-circle" alt="Alternate Text" /></td>
+                                    <td>Kustavo Kuerten</td>
+                                    <td>X</td>
+                                    <td>Kustavo Kuerten</td>
+                                    <td><img src="/Content/img/Vetores/Guga Kuerten.jpg" style="width:50px" class="img-circle" alt="Alternate Text" /></td>
+                                    <td><b>6/3</b></td>
+                                    <td><b>4/6</b></td>
+                                    <td><b>14/12</b></td>
+                                    <td>Kustavo Kuerten</td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+
+                    </div>
+                </div>
+
+            </div>
+            <!-- SIDEBAR -->
+            <div class="col-md-3">
+                <aside class="sidebar topspace30">
+                    <div class="wowwidget">
+                        <h4>Categorias</h4>
+                        <ul class="categories">
+                            <li><a href="#">1ª Classe SM</a></li>
+                            <li><a href="#">2ª Classe SM</a></li>
+                            <li><a href="#">3ª Classe SM</a></li>
+                            <li><a href="#">4ª Classe SM</a></li>
+                            <li><a href="#">1ª Classe SF</a></li>
+                            <li><a href="#">2ª Classe SF</a></li>
+                            <li><a href="#">Senior 40 A</a></li>
+                            <li><a href="#">Senior 40 B</a></li>
+                        </ul>
+                        <h4>Períodos</h4>
+                        <ul class="categories">
+                            @for (int i = 1; i < 12; i++)
+                            {
+                                var dt = DateTime.Today.Month;
+                                var mes = "";
+                                if (i == 1) { mes = "janeiro"; }
+                                if (i == 2) { mes = "fevereio"; }
+                                if (i == 3) { mes = "março"; }
+                                if (i == 4) { mes = "abril"; }
+                                if (i == 5) { mes = "maio"; }
+                                if (i == 6) { mes = "junho"; }
+                                if (i == 7) { mes = "julho"; }
+                                if (i == 8) { mes = "agosto"; }
+                                if (i == 9) { mes = "setembro"; }
+                                if (i == 10) { mes = "outubro"; }
+                                if (i == 11) { mes = "novembro"; }
+                                if (i == 12) { mes = "dezembro"; }
+
+                                var someVariable = "Programação: " + mes;
+                                if (mes == "abril")
+                                {
+                                    <li class="info"><a href="#">@someVariable</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="#">@someVariable</a></li>
+                                }
+
+                            }
+
+
+                        </ul>
+                    </div>
+
+
+                </aside>
+            </div>
+            <!-- end sidebar -->
+        </div>
+    </section>
+    <!--CALL TO ACTION PANEL
+    ================================================== -->
+    <!-- /. end call to action-->
+</div>
+<!-- /.wrapsemibox end-->
+<!-- BEGIN FOOTER
+================================================== -->
+<!-- /footer section end-->
+<!-- /.wrapbox ends-->
+<!-- SCRIPTS, placed at the end of the document so the pages load faster
+================================================== -->
+<script src="~/Scripts/js/jquery.js"></script>
+<script src="~/Scripts/js/bootstrap.js"></script>
+<script src="~/Scripts/js/plugins.js"></script>
+<script src="~/Scripts/js/common.js"></script>
+

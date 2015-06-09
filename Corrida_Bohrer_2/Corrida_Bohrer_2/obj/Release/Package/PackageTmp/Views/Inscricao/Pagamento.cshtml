@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Pagamento";
+}
+
+<h2>Pagamento</h2>
+
+<!-- Declaração do formulário -->
+
+       <form method="post" target="pagseguro"      action="https://sandbox.pagseguro.uol.com.br/v2/checkout/payment.html"
+     @*action="http://localhost:9090/v2/checkout/payment.html"*@
+     typeof="application/x-www-form-urlencoded" accept-charset="ISO-8859-1">
+
+   <!-- Campos obrigatórios -->
+   <input name="receiverEmail" type="text" value="gabrielalfa@gmail.com">
+   <input name="currency" type="text" value="BRL">
+
+   <!-- Itens do pagamento (ao menos um item é obrigatório) -->
+   <input name="itemId1" type="text" value="0001">
+   <input name="itemDescription1" type="text" value="Adesao Corrida Campeoes">
+   <input name="itemAmount1" type="text" value="99.00">
+   <input name="itemQuantity1" type="text" value="1">
+   <input name="itemWeight1" type="text" value="1000">
+
+
+   <!-- Código de referência do pagamento no seu sistema (opcional) -->
+   <input name="reference" type="text" value="REF1234">
+
+
+   <!-- Dados do comprador (opcionais) -->
+   <input name="senderName" type="text" value="José Comprador">
+   <input name="senderAreaCode" type="text" value="11">
+   <input name="senderPhone" type="text" value="56273440">
+   <input name="senderEmail" type="text" value="c88262713891639924670@sandbox.pagseguro.com.br">
+
+   <!-- submit do form (obrigatório) -->
+   <input alt="Pague com PagSeguro" name="submit" type="image" 
+           src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/120x53-pagar.gif" />
+
+</form>
+
+
+<!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
+<form action="https://sandbox.pagseguro.com.br/checkout/v2/payment.html" method="post" onsubmit="PagSeguroLightbox(this); return false;">
+    <!-- NÃO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
+    <input type="hidden" name="code" value="8EE3EEC10606009CC45E6FB7F654378B" />
+    <input type="image" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/209x48-pagar-azul-assina.gif" name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!" />
+</form>
+<script type="text/javascript" src="https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
+<!-- FINAL FORMULARIO BOTAO PAGSEGURO -->
+

@@ -1,0 +1,29 @@
+﻿
+
+<section class="toparea">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 top-text pull-left animated fadeInLeft">
+                Seja Bem Vindo <span class="separator"></span> Corrida dos Campeões Bohrer Sports
+            </div>
+            @if (Request.IsAuthenticated)
+            {
+                
+                <div class="col-md-6 text-right pull-left animated fadeInLeft">
+                    @Session["User"] <span class="separator"></span><a href="/Administrador/Logout">Sair</a> 
+                </div>
+
+            }
+            else
+            {
+                <div class="col-md-6 text-right animated fadeInRight">
+                    <div class="social-icons">
+                        <a class="icon icon-user" href="/Administrador/Logar"></a>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
+

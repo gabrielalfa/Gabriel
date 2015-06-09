@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "deletar_jogos";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<div class="col-xs-4">
+
+    <form action="/Jogos/Deletar_Jogos" method="post" enctype="multipart/form-data">
+        <fieldset>
+            <legend>Deletar Programação</legend>
+            <select name="mes" class="form-control" required="required">
+                <option value="">Escolha um mês</option>
+                <option value="1">Janeiro</option>
+                <option value="2">Fevereiro</option>
+                <option value="3">Março</option>
+                <option value="4">Abril</option>
+                <option value="5">Maio</option>
+                <option value="6">Junho</option>
+                <option value="7">Julho</option>
+                <option value="8">Agosto</option>
+                <option value="9">Setembro</option>
+                <option value="10">Outubro</option>
+                <option value="11">Novembro</option>
+                <option value="12">Dezembro</option>
+            </select>
+        </fieldset>
+
+        <button type="submit" class="btn btn-danger">Deletar</button>
+
+
+
+
+    </form>
+
+</div>
+
+<script src="~/Scripts/js/jquery.js"></script>
+<script src="~/Scripts/js/bootstrap.js"></script>
+<script src="~/Scripts/js/plugins.js"></script>
+<script src="~/Scripts/js/common.js"></script>

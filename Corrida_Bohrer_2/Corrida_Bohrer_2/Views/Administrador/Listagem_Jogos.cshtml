@@ -1,0 +1,107 @@
+﻿@model IEnumerable<Corrida_Bohrer.Models.Jogos>
+
+@{
+    ViewBag.Title = "Listagem_Jogos";
+}
+
+<script src="~/Scripts/jquery-1.9.1.js"></script>
+<script src="~/Scripts/jquery.mask.js"></script>
+
+<script type="text/javascript">
+
+    $(".data").mask("00/00/0009");
+
+
+</script>
+
+<script type="text/javascript">
+
+    $(".hora").mask("00:09");
+
+
+</script>
+
+
+
+
+
+<!-- BLOG
+================================================== -->
+<section class="container animated fadeInDown notransition">
+    <div class="row blogindex">
+        <!-- MAIN -->
+        <div class="col-md-12">
+            <div class="text-center">
+                <h2>Edição <span class="colortext">de Jogos</span> Corrida dos Campeões</h2>
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+
+                    <form action="/Jogos/Exmplo" method="post">
+                        <table class="table table-hover ">
+                            <tr>
+                                <th >Imagem</th>
+                                <th >nome</th>
+                                <th ></th>
+                                <th >nome 2</th>
+                                <th >Vitórias</th>
+                                <th >Dia</th>
+                                <th >HR</th>
+                                <th ></th>
+
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr class="info">
+                                    <td valign="middle">
+                                        <img src="@item.path_j1" style="width:50px; height:50px" class="img-circle" alt="Alternate Text" />
+                                    </td>
+                                    <td valign="middle">
+                                        @Html.DisplayFor(x => item.Nome_j1, new { @class = "edit" })
+                                        @*@Html.EditorFor(x => item., new { @class = "edit" })*@
+                                    </td>
+                                    <td valign="middle">X</td>
+                                    <td valign="middle">
+                                        @Html.DisplayFor(x => item.Nome_j2, new { @class = "edit" })
+                                        @*@Html.DropDownListFor(m => item.Nome_j1, ViewData["Jogadores"] as List<SelectListItem>, new { @class = "form-control" })*@
+                                    </td>
+                                    <td valign="middle"><img src="@item.path_j2" style="width:50px; height:50px" class="img-circle" alt="Alternate Text" /></td>
+                                    <td valign="middle"><p class="data">@item.dia</p></td>
+                                    <td valign="middle"><p class="hora">@item.hora</p></td>
+                                    <td><button type="submit" formaction="/Administrador/Editar_Jogos/@item.id" class=" btn-primary">editar</button></td>
+
+                                </tr>
+
+                            }
+                        </table>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                   
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<!--CALL TO ACTION PANEL
+================================================== -->
+<!-- /. end call to action-->
+<!-- /.wrapsemibox end-->
+<!-- BEGIN FOOTER
+================================================== -->
+<!-- /footer section end-->
+<!-- /.wrapbox ends-->
+<!-- SCRIPTS, placed at the end of the document so the pages load faster
+================================================== -->
+<script src="~/Scripts/js/jquery.js"></script>
+<script src="~/Scripts/js/bootstrap.js"></script>
+<script src="~/Scripts/js/plugins.js"></script>
+<script src="~/Scripts/js/common.js"></script>
+
+

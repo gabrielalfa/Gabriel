@@ -1,0 +1,192 @@
+﻿@model Corrida_Bohrer.Models.Registro
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<script src="/Scripts/jquery-1.9.1.min.js"></script>
+<script src="/Scripts/jquery.mask.js"></script>
+
+<script type="text/javascript">
+
+
+    $("#telefone").mask("(00) 0000-0009");
+    //$("#CPF").mask("000.000.000-09");
+    //$("#data_nasc").mask("00/00/0000");
+
+
+
+</script>
+
+@* Registro *@
+<script type="text/javascript">
+    $(document).ready(function () {
+        //Dropdownlist Selectedchange event
+        $("#registro_email").keyup(function () {
+            $("#lbl_Nexistente").text("");
+            var item = $("#registro_email").val()
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("Procura_Email_Reg", "Registro")', // we are calling json method
+                dataType: 'json',
+                data: {
+                    Email_reg: $("#registro_email").val(),
+                },
+                success: function (mail) {
+                    if (mail) {
+                        if (item.toString() != "") {
+                            $("#lbl_Nexistente").text("O email já está registrado na base de dados!!!");
+                            $("#Nome").attr("readonly", "readonly");
+                            $("#senha").attr("readonly", "readonly");
+                            $("#telefone").attr("readonly", "readonly");
+                            $("#categoria").attr("readonly", "readonly");
+
+                        }
+
+                    }
+                    else {
+
+                        $("#Nome").removeAttr('readOnly');
+                        $("#senha").removeAttr('readOnly');
+                        $("#telefone").removeAttr('readOnly');
+                        $("#categoria").removeAttr('readOnly');
+
+
+                    }
+
+                },
+                error: function (ex) {
+
+                }
+            });
+            return false;
+        })
+    });
+
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#msg").hide();
+    });
+
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+       
+        $("#btn_reg").click(function () {
+            $("#msg").show();
+        })
+    });
+
+</script>
+
+
+
+
+
+
+
+<br />
+<section class="container services">
+    <form method="post" action="/Registro/Registro" id="contactform" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-2"></div>
+
+            <div class="col-md-4 animated fadeInLeft notransition">
+                <div class="box effect2">
+                    <h4>REALIZE SUA INSCRIÇÃO</h4>
+                    <p>
+                        Realize seu registro agora, é simples e fácil e não custa nada!!
+                    </p>
+                    <div>
+                        <p>
+                            Limite de Inscritos: 150/230
+                        </p>
+                    </div>
+                </div>
+
+                <div id="msg" class="box effect2">
+                    <p> 
+                        <label>@Html.ValidationMessageFor(m => m.Nome)</label>
+                    <p> 
+                        <label>@Html.ValidationMessageFor(m => m.email)</label>
+                    <p>
+                        <label>@Html.ValidationMessageFor(m => m.password)</label>
+                    <p>
+                        <label>@Html.ValidationMessageFor(m => m.telefone)</label>
+                    <p> 
+                         <label>@Html.ValidationMessageFor(m => m.id_categoria)</label>
+                </div>
+
+
+
+            </div>
+            <div class="col-md-4 animated fadeInLeft notransition">
+                <div class="box effect2">
+                    <h4>INSCRIÇÂO</h4>
+
+
+
+                    <div class="form">
+                        @Html.TextBoxFor(x => x.Nome, new { @class = "col-md-12", name = "name", placeholder = "Nome", @id = "Nome" })
+
+                        <label id="lbl_Nexistente" class="label label-info" for="exampleInputEmail1"></label>
+                        @Html.TextBoxFor(x => x.email, new { @class = "col-md-12", name = "email", placeholder = "Email", @id = "registro_email" })
+
+                        @Html.PasswordFor(x => x.password, new { @class = "col-md-12", name = "password", placeholder = "Senha de acesso", @id = "senha" })
+
+                        @Html.TextBoxFor(x => x.telefone, new { @class = "col-md-12", name = "telefone", placeholder = "Telefone", @id = "telefone" })
+
+                        @Html.DropDownListFor(m => m.id_categoria, ViewData["categorias"] as List<SelectListItem>, new { @class = "col-md-12", id = "categoria" })
+
+                        <input class="col-md-12" type="file" name="uploadFile" placeholder="uploadFile">
+
+
+
+                        <button class="btn btn-default" id="btn_reg">Registrar</button>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+
+
+<!-- SCRIPTS, placed at the end of the document so the pages load faster
+================================================== -->
+<script src="~/Scripts/js/jquery.js"></script>
+<script src="~/Scripts/js/bootstrap.js"></script>
+<script src="~/Scripts/js/plugins.js"></script>
+<script src="~/Scripts/js/common.js"></script>
+
+<script src="/Scripts/jquery.validate.js"></script>
+<script src="/Scripts/jquery.validate.unobtrusive.js"></script>
+
+
+
+<script>
+    //CALL TESTIMONIAL ROTATOR
+    $(function () {
+        /*
+        - how to call the plugin:
+        $( selector ).cbpQTRotator( [options] );
+        - options:
+        {
+            // default transition speed (ms)
+            speed : 700,
+            // default transition easing
+            easing : 'ease',
+            // rotator interval (ms)
+            interval : 8000
+        }
+        - destroy:
+        $( selector ).cbpQTRotator( 'destroy' );
+        */
+        $('#cbp-qtrotator').cbpQTRotator();
+    });
+</script>

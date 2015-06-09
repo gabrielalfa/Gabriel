@@ -1,0 +1,21 @@
+﻿
+
+@{
+    ViewBag.Title = "Retorno";
+
+}
+
+<h2>Retorno</h2>
+
+@ViewBag.teste;
+<br />
+<hr />
+<br />
+@ViewBag.debug;
+
+<form action="https://ws.sandbox.pagseguro.uol.com.br/v3/transactions/notifications/1D921B2263E44A56A8FA2F31E2D4CEA0?email=gabrielalfa@gmail.com&token=DE30B7B698F847ED920D80791E640D15" method="post">
+
+    <input type="submit" name="name" value="submit" />
+
+</form>
+

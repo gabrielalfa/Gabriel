@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "Categoria";
+}
+
+<!-- PAGE TITLE
+================================================== -->
+<section class="pageheader-default text-center">
+    <div class="semitransparentbg">
+        <h1 class="animated fadeInLeftBig notransition">Ranking Temporada 1/2015</h1>
+        <p class="animated fadeInRightBig notransition container wowbreadcr">
+            Corrida dos Campeões - Bohrer Sports
+        </p>
+    </div>
+</section>
+<div class="wrapsemibox">
+    <div class="semiboxshadow text-center">
+        <img src="img/shp.png" class="img-responsive" alt="">
+    </div>
+    <!-- BLOG
+    ================================================== -->
+    <section class="container animated fadeInDown notransition">
+        <div class="row blogindex">
+            <!-- MAIN -->
+            <div class="col-md-9">
+                <div class="text-center">
+                    <h2>Ranking Corrida dos Campeões</h2>
+                    <span class="meta bottomspace30">Atualizado <a href="#" title="Posts by Henry Austin" rel="author">Adm. Bohrer</a> <span class="bullet">•</span> November 12, 2015 <span class="bullet">•</span> <a href="/Home" title="View all posts in Food &amp; Health" rel="category tag">Corrida &amp; Campeões</a></span>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        
+                        <table class="table table-hover">
+                            <tr>
+                                <th>Imagem</th> 
+                                <th>Nome</th> 
+                                <th>Aprov.</th> 
+                                <th>Nº Jogo</th> 
+                                <th>Vitórias</th> 
+                                <th>Derrotas</th> 
+                                <td>Pontos</td>   
+                            </tr>
+                            @for (int i = 0; i < 10; i++)
+                            {
+                                <tr>
+                                    <td><img src="/Content/img/Vetores/Guga Kuerten.jpg" style="width:50px" class="img-circle" alt="Alternate Text" /></td>
+                                    <td>Kustavo Kuerten</td>
+                                    <td>75%</td>
+                                    <td>10</td>
+                                    <td>6</td>
+                                    <td>4</td>
+                                    <td>250</td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                       
+                    </div>
+                </div>
+
+            </div>
+            <!-- SIDEBAR -->
+            <div class="col-md-3">
+                <aside class="sidebar topspace30">
+                    <div class="wowwidget">
+                        <h4>Categories</h4>
+                        <ul class="categories">
+                            <li><a href="#">Melhores</a></li>
+                            <li><a href="#">Histórico Jogos</a></li>
+                            <li><a href="#">Performance</a></li>
+                            <li><a href="#">Face to Face</a></li>
+                        </ul>
+                    </div>
+
+
+                </aside>
+            </div>
+            <!-- end sidebar -->
+        </div>
+    </section>
+    <!--CALL TO ACTION PANEL
+    ================================================== -->
+    <!-- /. end call to action-->
+</div>
+<!-- /.wrapsemibox end-->
+<!-- BEGIN FOOTER
+================================================== -->
+<!-- /footer section end-->
+<!-- /.wrapbox ends-->
+<!-- SCRIPTS, placed at the end of the document so the pages load faster
+================================================== -->
+<script src="~/Scripts/js/jquery.js"></script>
+<script src="~/Scripts/js/bootstrap.js"></script>
+<script src="~/Scripts/js/plugins.js"></script>
+<script src="~/Scripts/js/common.js"></script>

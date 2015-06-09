@@ -1,0 +1,140 @@
+﻿@model Corrida_Bohrer.Models.Jogos
+
+@{
+    ViewBag.Title = "Editar_Jogos";
+}
+
+
+<script src="~/Scripts/jquery-1.9.1.js"></script>
+<script src="~/Scripts/jquery.mask.js"></script>
+
+<script type="text/javascript">
+
+    $(".data").mask("00/00/0009");
+
+
+</script>
+
+<script type="text/javascript">
+
+    $(".hora").mask("00:09");
+
+
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#subst_1").change(function () {
+           
+            $("#idj_1").val($("#subst_1").val());
+            $("#j_1").val($("#subst_1 :selected").text());
+        })
+    });
+
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        //Dropdownlist Selectedchange event
+        $("#subst_2").change(function () {
+
+            $("#idj_2").val($("#subst_2").val());
+            $("#j_2").val($("#subst_2 :selected").text());
+        })
+    });
+
+</script>
+
+
+
+
+
+<!-- BLOG
+================================================== -->
+<section class="container animated fadeInDown notransition">
+    <div class="row blogindex">
+        <!-- MAIN -->
+        <div class="col-md-12">
+            <div class="text-center">
+                <h2>Edição <span class="colortext">de Jogos</span> Corrida dos Campeões</h2>
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+
+                    <form action="/Administrador/Salvar_Edicao/" method="post">
+
+                        @Html.HiddenFor(x => x.id)
+                        @Html.HiddenFor(x => x.mes)
+
+                        <table class="table table-hover table-responsive">
+                            <tr>
+                               
+                                <th colspan="2">nome</th>
+                                <th></th>
+                                <th colspan="2">nome 2</th>
+                               
+                                <th>Dia</th>
+                                <th>HR</th>
+                                <th colspan="3"></th>
+
+                            </tr>
+
+                            <tr class="info">
+                                
+                                <td valign="middle">
+                                    @Html.TextBoxFor(x => x.Nome_j1, new {  @style = "width:100%", @class = "form-control", @id = "j_1" })
+                                    @Html.DropDownListFor(x => x.Nome_j1, ViewData["Jogadores"] as List<SelectListItem>, new { @class = "form-control", @id = "subst_1" })
+                                </td>
+                                <td valign="middle">
+                                    @Html.TextBoxFor(x => x.idj_1, new { @class = "edit", @readonly = "readonly", @style = "width:30px", @id = "idj_1" })
+                                </td>
+                                <td valign="middle">X</td>
+                                <td valign="middle">
+                                    @Html.TextBoxFor(x => x.Nome_j2, new { @class = "form-control", @style = "width:100%", @id = "j_2" })
+                                    @Html.DropDownListFor(x => x.Nome_j2, ViewData["Jogadores"] as List<SelectListItem>, new { @class = "form-control" , @id = "subst_2" })
+                                </td>
+                                <td valign="middle">
+                                    @Html.TextBoxFor(x => x.idj_2, new { @class = "edit", @readonly = "readonly", @style = "width:30px", @id = "idj_2" })
+                                </td>
+                                
+                                <td valign="middle">@Html.TextBoxFor(x => x.dia, new { @class = "data" })</td>
+                                <td valign="middle">@Html.TextBoxFor(x => x.hora, new { @class = "hora" })</td>
+                                <td><button type="reset" class=" btn-warning">resetar</button></td>
+                                <td><button type="submit" class=" btn-primary">salvar</button></td>
+                                <td><button type="submit" class=" btn-danger">deletar</button></td>
+
+                            </tr>
+
+
+                        </table>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<!--CALL TO ACTION PANEL
+================================================== -->
+<!-- /. end call to action-->
+<!-- /.wrapsemibox end-->
+<!-- BEGIN FOOTER
+================================================== -->
+<!-- /footer section end-->
+<!-- /.wrapbox ends-->
+<!-- SCRIPTS, placed at the end of the document so the pages load faster
+================================================== -->
+<script src="~/Scripts/js/jquery.js"></script>
+<script src="~/Scripts/js/bootstrap.js"></script>
+<script src="~/Scripts/js/plugins.js"></script>
+<script src="~/Scripts/js/common.js"></script>

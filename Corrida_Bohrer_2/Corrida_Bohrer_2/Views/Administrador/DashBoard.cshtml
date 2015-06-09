@@ -1,0 +1,69 @@
+﻿@model  IEnumerable<Corrida_Bohrer.Models.Jogos>
+
+@{
+    ViewBag.Title = "DashBoard";
+}
+
+
+<br />
+
+<div class="row">
+
+
+    @Html.Action("criar_jogos", "Jogos", null)
+
+
+
+
+    <p>@ViewBag.msg</p>
+
+    <div class="col-xs-4">
+
+        <form  method="post">
+            <fieldset>
+                <legend>Programação Jogos</legend>
+                <table class="table table-hover">
+                    <tr>
+                        <th><center>Mês</center></th>
+                        <th></th>
+                        <th><center>Contagem</center></th>
+                        <th></th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        var nome_mes = "";
+                        if (int.Parse(item.mes) == 1) { nome_mes = "Janeiro"; }
+                        if (int.Parse(item.mes) == 2) { nome_mes = "fevereio"; }
+                        if (int.Parse(item.mes) == 3) { nome_mes = "março"; }
+                        if (int.Parse(item.mes) == 4) { nome_mes = "abril"; }
+                        if (int.Parse(item.mes) == 5) { nome_mes = "maio"; }
+                        if (int.Parse(item.mes) == 6) { nome_mes = "junho"; }
+                        if (int.Parse(item.mes) == 7) { nome_mes = "julho"; }
+                        if (int.Parse(item.mes) == 8) { nome_mes = "agosto"; }
+                        if (int.Parse(item.mes) == 9) { nome_mes = "setembro"; }
+                        if (int.Parse(item.mes) == 10) { nome_mes = "outubro"; }
+                        if (int.Parse(item.mes) == 11) { nome_mes = "novembro"; }
+                        if (int.Parse(item.mes) == 12) { nome_mes = "dezembro"; }
+
+
+
+                        <tr>
+                            @Html.HiddenFor(x => item.id)
+                            <td><center>@nome_mes</center></td>
+                            <td><center>/</center></td>
+                            <td><center>@item.contagem_group_mes</center></td>
+                            <td><button type="submit" formaction="/Administrador/Listagem_Jogos/@item.mes" class=" btn-primary">editar</button></td>
+                        </tr>
+                    }
+
+                </table>
+
+
+            </fieldset>
+        </form>
+
+    </div>
+
+    @Html.Action("deletar_jogos", "Jogos", null)
+
+</div>

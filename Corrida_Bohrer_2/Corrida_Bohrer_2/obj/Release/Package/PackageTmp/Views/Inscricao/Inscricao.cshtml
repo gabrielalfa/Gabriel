@@ -1,0 +1,207 @@
+﻿@model Corrida_Bohrer.Models.Registro
+
+@{
+    ViewBag.Title = "Registro";
+}
+
+<script src="/Scripts/jquery-1.9.1.min.js"></script>
+<script src="/Scripts/jquery.mask.js"></script>
+
+<script type="text/javascript">
+
+
+    $("#telefone").mask("(00) 0000-0009");
+    //$("#CPF").mask("000.000.000-09");
+    //$("#data_nasc").mask("00/00/0000");
+
+
+
+</script>
+
+@* Registro *@
+<script type="text/javascript">
+    $(document).ready(function () {
+        //Dropdownlist Selectedchange event
+        $("#registro_email").keyup(function () {
+            $("#lbl_Nexistente").text("");
+            var item = $("#registro_email").val()
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("Procura_Email_Reg")', // we are calling json method
+                dataType: 'json',
+                data: {
+                    Email_reg: $("#registro_email").val(),
+                },
+                success: function (mail) {
+                    if (mail) {
+                        if (item.toString() != "") {
+                            $("#lbl_Nexistente").text("O email já está registrado na base de dados!!!");
+                            $("#Nome").attr("readonly", "readonly");
+                            $("#senha").attr("readonly", "readonly");
+                            $("#telefone").attr("readonly", "readonly");
+                            $("#categoria").attr("readonly", "readonly");
+
+                        }
+
+                    }
+                    else {
+
+                        $("#Nome").removeAttr('readOnly');
+                        $("#senha").removeAttr('readOnly');
+                        $("#telefone").removeAttr('readOnly');
+                        $("#categoria").removeAttr('readOnly');
+
+
+                    }
+
+                },
+                error: function (ex) {
+
+                }
+            });
+            return false;
+        })
+    });
+
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#msg").hide();
+    });
+
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#btn_reg").click(function () {
+            $("#msg").show();
+        })
+    });
+
+</script>
+
+
+
+
+
+
+
+<br />
+<section class="container services">
+   
+        <div class="row">
+            <div class="col-md-2"></div>
+
+            <div class="col-md-4 animated fadeInLeft notransition">
+                <div class="box effect2">
+                    <h4>REALIZE SUA INSCRIÇÃO</h4>
+                    <p>
+                        Realize seu registro agora.
+                    </p>
+                    <p>
+                        Para jogadores juvenis que não tiverem em mãos o CPF, podem informar o CPF do responsável.
+                    </p>
+                    <p>
+                        Email e CPF não podem se repetir no Banco de dados, ou seja, os dados não podem se repetir
+                        para diferentes jogadores.
+                    </p>
+                    <div>
+                        <p>
+                            Limite de Inscritos: 150/230
+                        </p>
+                    </div>
+                </div>
+
+                <div id="msg" class="box effect2">
+                    <p>
+                        <label>@Html.ValidationMessageFor(m => m.Nome)</label>
+                    <p>
+                        <label>@Html.ValidationMessageFor(m => m.email)</label>
+                    <p>
+                        <label>@Html.ValidationMessageFor(m => m.password)</label>
+                    <p>
+                        <label>@Html.ValidationMessageFor(m => m.telefone)</label>
+                    <p>
+                        <label>@Html.ValidationMessageFor(m => m.id_categoria)</label>
+                </div>
+
+
+
+            </div>
+            <div class="col-md-4 animated fadeInLeft notransition">
+                <div class="box effect2">
+                    <h4>Registro</h4>
+
+                    <form method="post" action="/Registro/Registro" id="contactform">
+                        <div class="form">
+                            <input class="col-md-12" type="text" name="email" placeholder="Email" required="required">
+                            <input class="col-md-12" type="password" name="pass" placeholder="Password" required="required">
+                            <input class="col-md-12" type="text" name="CPF" placeholder="CPF" required="required">
+                            <input class="col-md-12" type="text" name="tel" placeholder="Telefone" required="required">
+                            <input type="submit" @*id="submit"*@ class="btn btn-default" value="Registrar e Pagar">
+                        </div>
+                    </form>
+
+
+                    @*<div class="form">
+                        @Html.TextBoxFor(x => x.Nome, new { @class = "col-md-12", name = "name", placeholder = "Name" })
+                        @Html.TextBoxFor(x => x.email, new { @class = "col-md-12", @id = "registro_email", placeholder = "Email" })
+                        <label id="lbl_Nexistente" ></label>
+                        @Html.PasswordFor(x => x.password, new { @class = "col-md-12", name = "password", placeholder = "Senha de acesso" })
+                        @Html.TextBoxFor(x => x.telefone, new { @class = "col-md-12", name = "telefone", placeholder = "Telefone" })
+                        <input class="col-md-12" type="file" name="email" placeholder="E-mail">
+
+                        <select class="col-md-12">
+                            <option value="0">Escolha classe</option>
+                            <option value="1">Escolha classe</option>
+                            <option value="2">Escolha classe</option>
+                        </select>
+                        <button type="submit"  id="submit" class="btn btn-default" value="Registrar">Pagar e Registrar</button>
+                    </div>*@
+
+                </div>
+            </div>
+        </div>
+   
+</section>
+
+
+<!-- SCRIPTS, placed at the end of the document so the pages load faster
+================================================== -->
+<script src="~/Scripts/js/jquery.js"></script>
+<script src="~/Scripts/js/bootstrap.js"></script>
+<script src="~/Scripts/js/plugins.js"></script>
+<script src="~/Scripts/js/common.js"></script>
+
+<script src="/Scripts/jquery.validate.js"></script>
+<script src="/Scripts/jquery.validate.unobtrusive.js"></script>
+
+
+
+<script>
+    //CALL TESTIMONIAL ROTATOR
+    $(function () {
+        /*
+        - how to call the plugin:
+        $( selector ).cbpQTRotator( [options] );
+        - options:
+        {
+            // default transition speed (ms)
+            speed : 700,
+            // default transition easing
+            easing : 'ease',
+            // rotator interval (ms)
+            interval : 8000
+        }
+        - destroy:
+        $( selector ).cbpQTRotator( 'destroy' );
+        */
+        $('#cbp-qtrotator').cbpQTRotator();
+    });
+</script>
+
+
+

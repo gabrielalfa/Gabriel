@@ -1,0 +1,174 @@
+﻿@{
+    ViewBag.Title = "Contato";
+}
+
+
+<!-- PAGE TITLE
+================================================== -->
+<section class="pageheader-default text-center">
+    <div class="semitransparentbg">
+        <h1 class="animated fadeInLeftBig notransition">Contato</h1>
+        <p class="animated fadeInRightBig notransition container page-description">
+            Tire suas dúvidas e questionamentos sobre nossos serviços ou entre em contato como
+            nosso time de consultores. 
+            
+        </p>
+        <p class="animated fadeInRightBig notransition container page-description">
+            Estamos prontos para recebe-lô.
+
+        </p>
+    </div>
+</section>
+<div class="wrapsemibox">
+    <div class="semiboxshadow text-center">
+        <img src="img/shp.png" class="img-responsive" alt="">
+    </div>
+    <!-- CONTACT
+    ================================================== -->
+    <iframe class="gmap" style="width:100%;height:370px;border: 0;margin-top:-40px;z-index: 1;position: relative;"
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3484.3354027620367!2d-51.19718899999999!3d-29.154786999999995!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x951ea2c37517fd75%3A0x5b5ec61d4839f0cf!2sBohrer+Esportes!5e0!3m2!1spt-BR!2sbr!4v1429315815967"></iframe>
+    
+    <section class="container">
+        <div class="row">
+            <div class="col-md-8 animated fadeInLeft notransition">
+                <h1 class="smalltitle">
+                    <span>Entre em contato</span>
+                </h1>
+                <div class="done">
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        Sua mensagem foi enviada. Agradecemos pelo seu contato!
+                    </div>
+                </div>
+                <form method="post" action="contact.php" id="contactform">
+                    <div class="form">
+                        <input class="col-md-6" type="text" name="name" placeholder="Name">
+                        <input class="col-md-6" type="text" name="email" placeholder="E-mail">
+                        <textarea class="col-md-12" name="comment" rows="7" placeholder="Messagem"></textarea>
+                        <input type="submit" id="submit" class="btn" value="Enviar">
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-4 animated fadeInRight notransition">
+                <h1 class="smalltitle">
+                    <span>Contatos</span>
+                </h1>
+                <p>
+                    Você pode nos contactar pelos telefones abaixo se preferir.
+                </p>
+                <h4 class="font100">Local</h4>
+                <ul class="unstyled">
+                    <li><span style="margin-right:5px;"><i class="icon-map-marker"></i></span> Endereço: Rua Antônio Ribeiro Mendes, Santa Catarina</li>
+                    <li><span style="margin-right:3px;"><i class="icon-phone"></i></span> Telefone: (54) 3027-3057</li>
+                    <li><span style="margin-right:2px;"><i class="icon-envelope"></i></span> Email: <a href="#">bohrersports@bohrersports.com.br</a></li>
+                </ul>
+                <h4 class="font100">Estamos a disposição</h4>
+                <ul class="unstyled">
+                    <li><i class="icon-time"></i> Segunda - Sexta 6am às 11pm</li>
+                    <li><i class="icon-time"></i> Sábado - 9am às 4pm</li>
+                    <li><i class="icon-time"></i> Domingo - Aberto para locações</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--CALL TO ACTION PANEL
+    ================================================== -->
+    
+    <!-- /. end call to action-->
+</div>
+<!-- /.wrapsemibox end-->
+<!-- BEGIN FOOTER
+================================================== -->
+
+<!-- /footer section end-->
+
+<!-- /.wrapbox ends-->
+<!-- SCRIPTS, placed at the end of the document so the pages load faster
+================================================== -->
+<script src="/Scripts/js/jquery.js"></script>
+<script src="/Scripts/js/bootstrap.js"></script>
+<script src="/Scripts/js/plugins.js"></script>
+<script src="/Scripts/js/common.js"></script>
+<script>
+$(document).ready(function() {
+
+ $('#Send').click(function() {
+
+        // name validation
+
+        var nameVal = $("#name").val();
+        if(nameVal == '') {
+
+            $("#name_error").html('');
+            $("#name").after('<label class="error" id="name_error">Please enter your name.</label>');
+            return false
+        }
+        else
+        {
+            $("#name_error").html('');
+        }
+
+        /// email validation
+
+        
+        var emailaddressVal = $("#email").val();
+
+        if(emailaddressVal == '') {
+            $("#email_error").html('');
+            $("#email").after('<label class="error" id="email_error">Please enter your email address.</label>');
+            return false
+        }
+        else if(!emailReg.test(emailaddressVal)) {
+            $("#email_error").html('');
+            $("#email").after('<label class="error" id="email_error">Enter a valid email address.</label>');
+            return false
+
+        }
+        else
+        {
+            $("#email_error").html('');
+        }
+
+        $.post("post.php?"+$("#MYFORM").serialize(), {
+
+        }, function(response){
+
+        if(response==1)
+        {
+            $("#after_submit").html('');
+            $("#Send").after('<label class="success" id="after_submit">Your message has been submitted.</label>');
+            change_captcha();
+            clear_form();
+        }
+        else
+        {
+            $("#after_submit").html('');
+            $("#Send").after('<label class="error" id="after_submit">Error ! invalid captcha code .</label>');
+        }
+
+
+    });
+
+    return false;
+ });
+
+ // refresh captcha
+ $('img#refresh').click(function() {
+
+        change_captcha();
+ });
+
+ function change_captcha()
+ {
+    document.getElementById('captcha').src="get_captcha.php?rnd=" + Math.random();
+ }
+
+ function clear_form()
+ {
+    $("#name").val('');
+    $("#email").val('');
+    $("#message").val('');
+ }
+});
+</script>
+
